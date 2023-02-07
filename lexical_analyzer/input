@@ -1,0 +1,6 @@
+    "line"
+  /* a new multiline comment
+  another comment
+  something else  */ int i = 0
+
+"Something here"
