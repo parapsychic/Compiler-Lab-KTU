@@ -78,7 +78,6 @@ int main (int argc, char *argv[])
   
   int line_no = 0;
   while (!feof(file)) {
-    char start, alp, stop;
     fscanf(file, "%c %c %c\n", &input[line_no][0], &input[line_no][1], &input[line_no][2]) ;
     line_no++;
     no_Transitions++;
