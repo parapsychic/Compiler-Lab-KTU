@@ -31,15 +31,6 @@ void findClosure(int state){
         }
     }
   }
-
-  printf("FOUNDING CLOSURE OF: %d\n", state);
-  for (int i =0; i < no_States; i++) {
-    printf("STATE %d :", i);
-    for (int j = 0; j < no_eclosure[i]; j++) {
-      printf("q%d ", eclosure[i][j]); 
-    } 
-    printf("\n");
-  }
 }
 
 void init_arr(){

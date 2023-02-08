@@ -98,23 +98,23 @@ void follow(char non_term, int index){
       if (prod[i][j] == non_term) {
         
         // if last, do follow of [i][0]
-       if (prod[i][j+1] == 0) {
-       
-         // last NT and LHS should not be same. eg. A=aA
-         if (prod[i][j] != prod[i][0]) {
-           int index_curr = getIndex(prod[i][0]);
-           if (no_Follows[index_curr] == 0) {
-             follow(prod[i][0], index_curr);
-           }
-           // add the follows to this NT's follows
-           for (int l = 0; l < no_Follows[index_curr]; l++) {
-             follows[index][no_Follows[index]] = follows[index_curr][l];
-             no_Follows[index] ++;
-           }
-         }
-       }
-       
-       else{
+    //   if (prod[i][j+1] == 0) {
+    //   
+    //     // last NT and LHS should not be same. eg. A=aA
+    //     if (prod[i][j] != prod[i][0]) {
+    //       int index_curr = getIndex(prod[i][0]);
+    //       if (no_Follows[index_curr] == 0) {
+    //         follow(prod[i][0], index_curr);
+    //       }
+    //       // add the follows to this NT's follows
+    //       for (int l = 0; l < no_Follows[index_curr]; l++) {
+    //         follows[index][no_Follows[index]] = follows[index_curr][l];
+    //         no_Follows[index] ++;
+    //       }
+    //     }
+    //   }
+    //   
+    //   else{
            // take the next letters one by one
            for (int k = j+1; true; k++) {
              // if out of alphabets on RHS, do follow of [i][0] like above (same code)
@@ -144,9 +144,7 @@ void follow(char non_term, int index){
              if (isupper(prod[i][k])) {
                int index_curr = getIndex(prod[i][k]);
                for (int l = 0; l < no_Firsts[index_curr]; l++) {
-                   printf("Before here %c \n", firsts[index_curr][l]);
                    if (firsts[index_curr][l] != '#') {
-                        printf("In here\n");
                         follows[index][no_Follows[index]] = firsts[index_curr][l];
                         no_Follows[index]++;
                    }
@@ -157,7 +155,7 @@ void follow(char non_term, int index){
              } 
 
            }
-        }
+        //}
       } 
     }
   }
