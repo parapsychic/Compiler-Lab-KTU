@@ -14,17 +14,17 @@ void findClosure(int state){
   eclosure[state][no_eclosure[state]] = state;
   no_eclosure[state] ++;
   
-
+    //loop through each transition to find the required state on the LHS
     for (int j = 0; j < no_Transitions; j++) {
       if (input[j][0] == state + 48) {
-        if (input[j][1] == 'e') {
+        if (input[j][1] == 'e') { // if this is a e-transition from required state to some other state
           int next_state =  input[j][2] - 48;
-          eclosure[state][no_eclosure[state]] = next_state;
+          eclosure[state][no_eclosure[state]] = next_state; // add the other state to e_closure
           no_eclosure[state] ++;
-          if (no_eclosure[next_state] == 0) {
+          if (no_eclosure[next_state] == 0) { //if not already calculated, find the eclosure of the other state
             findClosure(next_state);
           }
-          for (int k = 0; k < no_eclosure[next_state]; k++) {
+          for (int k = 0; k < no_eclosure[next_state]; k++) { //copy other state's eclosure to current state's eclosure
              eclosure[state][no_eclosure[state]] = eclosure[next_state][k];
              no_eclosure[state] ++;
           }
@@ -80,7 +80,6 @@ int main (int argc, char *argv[])
   while (!feof(file)) {
     char start, alp, stop;
     fscanf(file, "%c %c %c\n", &start, &alp, &stop) ;
-    printf("\n VERIFY: %c %c %c\n", start, alp, stop);
     input[line_no][0] = start;
     input[line_no][1] = alp;
     input[line_no][2] = stop;
